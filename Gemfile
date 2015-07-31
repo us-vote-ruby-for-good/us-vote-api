@@ -12,6 +12,7 @@ gem 'twitter-bootstrap-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
+gem 'jsonapi-resources'
 
 
 group :development, :test do
