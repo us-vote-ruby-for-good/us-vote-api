@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731194948) do
+ActiveRecord::Schema.define(version: 20150731201138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "elections", force: :cascade do |t|
+    t.integer  "jurisdiction_id"
+    t.string   "jurisdiction_type"
+    t.date     "election_date"
+    t.string   "election_type"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "elections", ["jurisdiction_type", "jurisdiction_id"], name: "index_elections_on_jurisdiction_type_and_jurisdiction_id", using: :btree
 
   create_table "states", force: :cascade do |t|
     t.string   "code"
