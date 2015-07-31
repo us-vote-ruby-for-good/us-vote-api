@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @admin_state.name %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @admin_state.code %>
+</p>
+
+<p>
+  <strong>Drupal:</strong>
+  <%= @admin_state.drupal_id %>
+</p>
+
+<%= link_to 'Edit', edit_admin_state_path(@admin_state) %> |
+<%= link_to 'Back', admin_states_path %>
