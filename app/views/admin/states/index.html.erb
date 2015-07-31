@@ -3,24 +3,15 @@
 <h1>Listing Admin States</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th>Drupal</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
+ 
   <tbody>
-    <% @admin_states.each do |admin_state| %>
+    <% @states.each do |state| %>
       <tr>
-        <td><%= admin_state.name %></td>
-        <td><%= admin_state.code %></td>
-        <td><%= admin_state.drupal_id %></td>
-        <td><%= link_to 'Show', admin_state %></td>
-        <td><%= link_to 'Edit', edit_admin_state_path(admin_state) %></td>
-        <td><%= link_to 'Destroy', admin_state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       
+        
+        <td><%= link_to state.name, admin_state_path(state) %></td>
+        
+        
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +19,3 @@
 
 <br>
 
-<%= link_to 'New State', new_admin_state_path %>

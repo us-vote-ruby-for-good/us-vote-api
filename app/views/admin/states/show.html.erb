@@ -2,18 +2,17 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @admin_state.name %>
+  <%= @state.name %>
 </p>
 
 <p>
   <strong>Code:</strong>
-  <%= @admin_state.code %>
+  <%= @state.code %>
 </p>
 
 <p>
   <strong>Drupal:</strong>
-  <%= @admin_state.drupal_id %>
+  <%= @state.drupal_id %>
 </p>
 
-<%= link_to 'Edit', edit_admin_state_path(@admin_state) %> |
-<%= link_to 'Back', admin_states_path %>
+<%= link_to '<< Back', admin_states_path %>
