@@ -53,6 +53,7 @@ GEM
     capybara-email (2.4.0)
       capybara (~> 2.4)
       mail
+    chronic (0.10.2)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -228,8 +229,12 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+<<<<<<< HEAD
   capybara
   capybara-email
+=======
+  chronic
+>>>>>>> Add Chronic and rename scrapers
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise

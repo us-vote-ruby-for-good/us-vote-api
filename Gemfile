@@ -14,6 +14,7 @@ gem 'webmock'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'wombat'
 gem 'webmock'
+gem 'chronic'
 
 gem 'devise'
 
