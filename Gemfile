@@ -12,7 +12,7 @@ gem 'twitter-bootstrap-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
-
+gem 'virtus'
 
 group :development, :test do
   gem 'byebug'
