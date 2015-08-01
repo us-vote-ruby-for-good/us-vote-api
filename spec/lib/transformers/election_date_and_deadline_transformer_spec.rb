@@ -15,7 +15,13 @@ RSpec.describe ElectionDateAndDeadlineTransformer do
     {
       "state" => "Alaska",
       "election_date" => Date.new(2016, 8, 16),
-      "election_type" => "primary"
+      "election_type" => "primary",
+      "attributes" => [
+        {
+          "type" => "early in person voting",
+          "start_date" => Date.new(2016, 8, 1)
+        }
+      ]
     }
   }
 
