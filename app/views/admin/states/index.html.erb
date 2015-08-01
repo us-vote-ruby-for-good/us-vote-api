@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Admin States</h1>
+
+<table>
+ 
+  <tbody>
+    <% @states.each do |state| %>
+      <tr>
+       
+        
+        <td><%= link_to state.name, admin_state_path(state) %></td>
+        
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

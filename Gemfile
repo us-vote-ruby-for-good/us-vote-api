@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+ruby '2.2.2'
+
+gem 'puma'
 gem 'rails', '4.2.3'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -9,11 +12,16 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'twitter-bootstrap-rails'
+gem 'wombat'
+gem 'webmock'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'chronic'
 
 gem 'devise'
 gem 'jsonapi-resources'
+gem 'virtus'
 
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'byebug'
@@ -22,5 +30,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl'
   gem 'database_cleaner'
+  gem 'capybara'
+  gem 'capybara-email'
 end
 
