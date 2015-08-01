@@ -6,9 +6,10 @@ RSpec.feature "User management by admins", type: :feature do
 
   before(:each) do
     login_as(login_user, :scope => :user)
+    clear_emails
   end
 
-  scenario "Creates a new admin user" do
+  scenario "Creates a new admin user, who can log in" do
     new_user_email = 'foo@bar.com'
 
     visit 'admin/users'
@@ -17,5 +18,8 @@ RSpec.feature "User management by admins", type: :feature do
     click_button 'Create User'
     expect(page).to have_text("We've sent an email") # flash message
     expect(page).to have_text(new_user_email)
+
+    open_email(new_user_email)
+    expect(current_email).to have_content "login"
   end
 end

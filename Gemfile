@@ -22,5 +22,6 @@ group :development, :test do
   gem 'factory_girl'
   gem 'database_cleaner'
   gem 'capybara'
+  gem 'capybara-email'
 end
 
