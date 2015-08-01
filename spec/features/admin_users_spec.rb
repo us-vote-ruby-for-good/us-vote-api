@@ -9,7 +9,7 @@ RSpec.feature "User management by admins", type: :feature do
     clear_emails
   end
 
-  scenario "Creates a new admin user, who can log in" do
+  scenario "Creates a new admin user, who gets a reset password email" do
     new_user_email = 'foo@bar.com'
 
     visit 'admin/users'
@@ -20,6 +20,6 @@ RSpec.feature "User management by admins", type: :feature do
     expect(page).to have_text(new_user_email)
 
     open_email(new_user_email)
-    expect(current_email).to have_content "login"
+    expect(current_email).to have_content "password"
   end
 end

@@ -8,7 +8,7 @@ class Admin::UsersController < Admin::BaseController
     generated_password = Devise.friendly_token.first(8)
     user = User.new(user_params.merge(password: generated_password))
     if user.save
-      # TODO: send an email to the new user
+      user.send_reset_password_instructions # TODO: customize this!
       flash[:notice] = "We've sent an email to #{user.email} with login instructions."
     else
       flash[:error] = user.errors.full_messages.first
