@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+ruby '2.2.2'
+
+gem 'puma'
 gem 'rails', '4.2.3'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -15,6 +18,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'byebug'
