@@ -6,4 +6,8 @@ class Election < ActiveRecord::Base
   validates :jurisdiction_type, presence: true
   validates :election_type,     presence: true
   validates :election_date,     presence: true, uniqueness: { scope: :jurisdiction }
+
+  def self.active
+    where('election_date >= ?', Time.now)
+  end
 end

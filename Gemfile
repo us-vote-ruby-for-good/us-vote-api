@@ -18,8 +18,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'chronic'
 
 gem 'devise'
-gem 'jsonapi-resources'
 gem 'virtus'
+gem 'active_model_serializers', '0.10.0.rc1'
 
 gem 'rails_12factor', group: :production
 
