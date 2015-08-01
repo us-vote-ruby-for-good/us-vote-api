@@ -1,2 +1,27 @@
-Users index
-Foo
+<h1>Admin Users</h1>
+<p>These are the users who can log in to the admin system.</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Last Login</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.last_sign_in_at %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="2">
+        <%= form_for [:admin, User.new] do |f| %>
+          <%= f.text_field :email, placeholder: "Email address" %>
+          <%= f.submit "Create User" %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
