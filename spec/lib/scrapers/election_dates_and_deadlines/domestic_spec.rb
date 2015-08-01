@@ -1,9 +1,9 @@
 require "rails_helper"
 
-RSpec.describe ElectionDatesAndDeadlinesScraper do
+RSpec.describe ElectionDatesAndDeadlinesScraper::Domestic do
   describe "#crawl" do
-    let(:dates_and_deadlines) { File.read(Rails.root.join('spec/fixtures/election_dates_and_deadlines.html')) }
-    let(:crawled_data) { @crawled_data ||= ElectionDatesAndDeadlinesScraper.new.crawl["table_rows"] }
+    let(:dates_and_deadlines) { File.read(Rails.root.join('spec/fixtures/election_dates_and_deadlines_domestic.html')) }
+    let(:crawled_data) { @crawled_data ||= ElectionDatesAndDeadlinesScraper::Domestic.new.crawl["table_rows"] }
     let(:alabama_header) { crawled_data[0] }
     let(:alaska_primary_election) { crawled_data[4] }
 
