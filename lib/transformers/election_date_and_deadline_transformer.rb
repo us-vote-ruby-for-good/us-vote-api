@@ -6,7 +6,7 @@ class ElectionDateAndDeadlineTransformer
 
   def to_hash
     {
-      "election_type" => parse_election_type(date_and_deadline["election_name"]),
+      "election_type" => election_type,
       "election_date" => Chronic.parse(date_and_deadline["election_date"]).to_date,
       "state" => parse_state_name(date_and_deadline["election_name"]),
       "attributes" => parse_attributes(date_and_deadline)
@@ -23,9 +23,9 @@ class ElectionDateAndDeadlineTransformer
     @states_names = ["Alabama", "Alaska", "West Virginia","Virginia", "Virgin Islands"] # State.all.pluck(:name)
   end
 
-  def parse_election_type(election_name)
+  def election_type
     key = election_types.keys.find do |election_type|
-      election_name.include?(election_type)
+      date_and_deadline["election_name"].include?(election_type)
     end
     election_types[key]
   end

@@ -1,8 +1,9 @@
 require "rails_helper"
 
 RSpec.describe ElectionDateAndDeadlineTransformer do
+  let(:election_name) { "Alaska Primary Election" }
   let(:election_dates_and_deadlines) { {
-    "election_name" => "Alaska Primary Election",
+    "election_name" => election_name,
     "election_date" => "August 16, 2016",
     "voter_registration" => "July 17, 2016",
     "absentee_ballot_request" => "August 6, 2016",
@@ -45,23 +46,36 @@ RSpec.describe ElectionDateAndDeadlineTransformer do
 
   describe "#parse_election_type" do
     it "parses a primary election type" do
-      expect(transformer.parse_election_type("Alaska Primary Election")).to eq("primary")
+      expect(transformer.election_type).to eq("primary")
     end
 
-    it "parses a general election type" do
-      expect(transformer.parse_election_type("Florida General Election")).to eq("general")
+    describe "It parses General Elections" do
+      let(:election_name) { "Florida General Election" }
+      it "returns general" do
+        expect(transformer.election_type).to eq("general")
+      end
     end
 
-    it "parses a special primary election type" do
-      expect(transformer.parse_election_type("Illinois Special Primary Election")).to eq("special primary")
+    describe "It parses Special Primary Election" do
+      let(:election_name) { "Illinois Special Primary Election" }
+      it "returns special primary" do
+        expect(transformer.election_type).to eq("special primary")
+      end
     end
 
-    it "parses a special congressional election type" do
-      expect(transformer.parse_election_type("New York Special Congressional Election, 11th Congressional District")).to eq("special congressional")
+    describe "It parses Special Congressional Election" do
+        let(:election_name) { "New York Special Congressional Election, 11th Congressional District" }
+      it "returns special congressional" do
+        expect(transformer.election_type).to eq("special congressional")
+      end
     end
 
-    it "parses a special congressional election type" do
-      expect(transformer.parse_election_type("District of Columbia Special Election: Ward 4 and Ward 8")).to eq("special")
+    describe "It parse Special Election" do
+      let(:election_name) { "District of Columbia Special Election: Ward 4 and Ward 8" }
+
+      it "returns special" do
+        expect(transformer.election_type).to eq("special")
+      end
     end
   end
 end
