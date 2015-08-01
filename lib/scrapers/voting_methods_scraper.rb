@@ -17,8 +17,5 @@ class VotingMethodsScraper
   }
 end
 
-# p rows["table_rows"][1]["early_in_person_voting"]
-
-
 # State | Early In-Person Voting | No Excuse Absentee Voting 
 # All-Mail Voting | Voter ID on Election Day | Same Day Voter Registration
