@@ -22,4 +22,5 @@ RSpec.feature "User management by admins", type: :feature do
     open_email(new_user_email)
     expect(current_email).to have_content "password"
   end
+  
 end
