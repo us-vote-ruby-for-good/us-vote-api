@@ -11,6 +11,7 @@ require 'webmock/rspec'
 
 require 'factory_girl'
 Dir[File.join(File.dirname(__FILE__), 'factories', '*.rb')].each { |file|require file }
+require_relative './factories'
 
 require 'capybara/email/rspec'
 
