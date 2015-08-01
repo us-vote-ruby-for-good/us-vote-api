@@ -13,7 +13,7 @@ class VotingMethodsScraper
     absentee_voting_with_excuse css: 'td:nth-child(4)'
     all_mail_voting css: 'td:nth-child(5)'
     voter_id_on_election_day css: 'td:nth-child(6)'
-    same_day_voter_registration css: 'td:nth-child(7)'
+    same_day_voter_registrations css: 'td:nth-child(7)'
   }
 end
 
