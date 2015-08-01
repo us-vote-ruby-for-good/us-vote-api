@@ -7,7 +7,7 @@ class ElectionDateAndDeadlineTransformer
   def to_hash
     {
       "election_type" => election_type,
-      "election_date" => Chronic.parse(date_and_deadline["election_date"]).to_date,
+      "election_date" => election_date,
       "state" => state_name,
       "attributes" => parse_attributes(date_and_deadline)
     }
@@ -38,6 +38,10 @@ class ElectionDateAndDeadlineTransformer
       "Primary Election" => "primary",
       "General Election" => "general"
     }
+  end
+
+  def election_date
+    Chronic.parse(date_and_deadline["election_date"]).to_date
   end
 
   def parse_attributes(date_and_deadline)
