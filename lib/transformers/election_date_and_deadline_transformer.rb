@@ -8,14 +8,14 @@ class ElectionDateAndDeadlineTransformer
     {
       "election_type" => election_type,
       "election_date" => Chronic.parse(date_and_deadline["election_date"]).to_date,
-      "state" => parse_state_name(date_and_deadline["election_name"]),
+      "state" => state_name,
       "attributes" => parse_attributes(date_and_deadline)
     }
   end
 
-  def parse_state_name(election_name)
+  def state_name
     states_names.find do |state_name|
-      election_name.start_with?(state_name)
+      date_and_deadline["election_name"].start_with?(state_name)
     end
   end
 

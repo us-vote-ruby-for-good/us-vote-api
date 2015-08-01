@@ -33,14 +33,25 @@ RSpec.describe ElectionDateAndDeadlineTransformer do
   end
 
   describe "#parse_state_name" do
-    it "parses Virginia" do
-      expect(transformer.parse_state_name("Virginia Primary Election")).to eq("Virginia")
+    describe "For Virigina Primary Election" do
+      let(:election_name) { "Virginia Primary Election" }
+      it "returns Virginia" do
+        expect(transformer.state_name).to eq("Virginia")
+      end
     end
-    it "parses West Virginia" do
-      expect(transformer.parse_state_name("West Virginia Primary Election")).to eq("West Virginia")
+
+    describe "For West Virigina Primary Election" do
+      let(:election_name) { "West Virginia Primary Election" }
+      it "returns West Virginia" do
+        expect(transformer.state_name).to eq("West Virginia")
+      end
     end
-    it "parses Virgin Islands" do
-      expect(transformer.parse_state_name("Virgin Islands Primary Election")).to eq("Virgin Islands")
+
+    describe "For Virgin Islands Primary Election" do
+      let(:election_name) { "Virgin Islands Primary Election" }
+      it "return Virgin Islands" do
+        expect(transformer.state_name).to eq("Virgin Islands")
+      end
     end
   end
 
