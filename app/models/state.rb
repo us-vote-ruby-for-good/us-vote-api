@@ -1,5 +1,5 @@
 class State < ActiveRecord::Base
-  has_many :elections
+  has_many :elections, as: :jurisdiction
 
   validates :code,      presence: true, uniqueness: true
   validates :name,      presence: true, uniqueness: true

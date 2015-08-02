@@ -1,10 +1,11 @@
 module Api
   class ElectionsController < BaseController
     respond_to :json
+    serialization_scope nil # TODO: why is this necessary?
 
     def index
       @elections = state.elections.active
-      respond_with @elections, serializer: ElectionSerializer
+      respond_with @elections, each_serializer: ElectionSerializer
     end
 
     private

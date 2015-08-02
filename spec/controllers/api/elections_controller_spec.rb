@@ -12,6 +12,7 @@ RSpec.describe Api::ElectionsController, type: :controller do
     it 'returns the data' do
       expect(response).to be_successful
 
+      puts response.body
       pending "write moar"
     end
   end
