@@ -77,6 +77,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # config.action_mailer.default_url_options = { host: 'foo.bar' } # TODO: FIX THIS
+  config.action_mailer.default_url_options = { host: 'us-vote-api.herokuapp.com' }
 
 end

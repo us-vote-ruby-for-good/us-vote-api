@@ -16,6 +16,13 @@ class Admin::UsersController < Admin::BaseController
     redirect_to action: :index
   end
 
+  def destroy
+    user = User.find(params[:id])
+    user.destroy!
+    flash[:notice] = "#{user.email} can no longer login."
+    redirect_to action: :index
+  end
+
 private
 
   def user_params
