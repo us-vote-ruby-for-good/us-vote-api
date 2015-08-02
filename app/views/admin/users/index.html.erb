@@ -12,7 +12,7 @@
     <% @users.each do |user| %>
       <tr class="user-<%= user.id %>">
         <td><%= user.email %></td>
-        <td><%= user.last_sign_in_at %></td>
+        <td><%= user.last_sign_in_at ? user.last_sign_in_at.to_date.to_s(:long) : "Never" %></td>
         <td>
           <%= button_to "Delete", [:admin, user], method: :delete,
             data: { confirm: "#{user.email} will lose their login access.  Are you sure?" } %>
@@ -20,7 +20,7 @@
       </tr>
     <% end %>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <%= form_for [:admin, User.new] do |f| %>
           <%= f.text_field :email, placeholder: "Email address" %>
           <%= f.submit "Create User" %>
