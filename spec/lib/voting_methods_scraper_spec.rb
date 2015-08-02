@@ -46,8 +46,8 @@ describe VotingMethodsScraper do
     end
 
     it "scrapes for a state's same day voter refistration option" do 
-      expect(alabama_data["same_day_voter_registration"]).to include("")
-      expect(alaska_data["same_day_voter_registration"]).to include("")
+      expect(alabama_data["same_day_voter_registrations"]).to include("")
+      expect(alaska_data["same_day_voter_registrations"]).to include("")
     end
   end
 end

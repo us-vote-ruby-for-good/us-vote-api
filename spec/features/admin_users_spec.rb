@@ -22,5 +22,18 @@ RSpec.feature "User management by admins", type: :feature do
     open_email(new_user_email)
     expect(current_email).to have_content "password"
   end
-  
+
+  scenario "Deletes an admin user" do
+    user_to_delete = FactoryGirl.create(:user)
+
+    visit 'admin/users'
+    expect(page).to have_text(user_to_delete.email)
+
+    user_section_selector = ".user-#{user_to_delete.id}"
+
+    within(user_section_selector) do
+      click_button "Delete"
+    end
+    expect(page).to_not have_selector(user_section_selector)
+  end
 end
