@@ -12,7 +12,9 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'usvote@sixwide.com' # TODO: CHANGE THIS to a real email
+  
+  # TODO: CHANGE THIS to a real email, which must be verified by the email service
+  config.mailer_sender = 'usvote@sixwide.com' 
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
