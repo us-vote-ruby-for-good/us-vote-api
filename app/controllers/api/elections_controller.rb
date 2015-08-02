@@ -5,7 +5,10 @@ module Api
 
     def index
       @elections = state.elections.active
-      respond_with @elections, each_serializer: ElectionSerializer
+      respond_with(
+        @elections,
+        each_serializer: ElectionSerializer
+      )
     end
 
     private

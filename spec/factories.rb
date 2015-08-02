@@ -6,9 +6,4 @@ FactoryGirl.define do
     # if needed
     # is_active true
   end
-  factory :state do
-  	code 'AL'
-  	name 'Alaska'
-  	drupal_id 1
-  end
 end
