@@ -20,6 +20,8 @@ gem 'chronic'
 gem 'devise'
 gem 'virtus'
 
+gem 'postmark-rails'
+
 gem 'rails_12factor', group: :production
 
 group :development, :test do
