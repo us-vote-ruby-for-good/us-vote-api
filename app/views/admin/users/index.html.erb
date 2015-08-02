@@ -10,9 +10,13 @@
   </thead>
   <tbody>
     <% @users.each do |user| %>
-      <tr>
+      <tr class="user-<%= user.id %>">
         <td><%= user.email %></td>
         <td><%= user.last_sign_in_at %></td>
+        <td>
+          <%= button_to "Delete", [:admin, user], method: :delete,
+            data: { confirm: "#{user.email} will lose their login access.  Are you sure?" } %>
+        </td>
       </tr>
     <% end %>
     <tr>
