@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'admin/hello#index'
+  root 'admin/states#index'
 
   namespace :admin do
-    resources :hello
     resources :users
     resources :states, only: [:index, :show]  
   end

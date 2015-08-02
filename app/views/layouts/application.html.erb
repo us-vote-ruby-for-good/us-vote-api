@@ -11,13 +11,15 @@
 <nav class="navbar navbar-default navbar-static-top">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">US Vote API</a>
+      <a class="navbar-brand" href="/">US Vote API</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <%# TODO: set the 'active' class correctly %>
-        <li class="active"><a href="/">Home</a></li>
-        <li><%= link_to('Admin Users', admin_users_path) %></li>
+        <% if user_signed_in? %>
+          <%# TODO: set the 'active' class on one of these li's %>
+          <li><%= link_to('Election Data', admin_states_path) %></li>
+          <li><%= link_to('Admin Users', admin_users_path) %></li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
