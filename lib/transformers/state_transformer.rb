@@ -7,9 +7,9 @@ class StateTransformer
 
   def transform
     all_states = filtered_state_drupal_ids + filtered_state_codes
-    all_states.partition { |hsh| hsh["name"] }.map do |hshs|
-      if hshs[0] && hshs[1]
-        hshs[0].merge(hshs[1])
+    all_states.group_by { |hsh| hsh["name"] }.each_with_object([]) do |(key, values), array|
+      array << if values[0] && values[1]
+        values[0].merge values[1]
       end
     end.compact
   end

@@ -5,30 +5,45 @@ class ElectionDateAndDeadlineLoader
   end
 
   def save
-    transformed_data["attributes"].map do |voting_option|
-      create_voting_option(voting_option)
+    transformed_data.map do |hsh|
+      if hsh["state"]
+        EDDLoader.new(hsh).save
+      end
     end
   end
 
-  def state
-    state_name = transformed_data["state"].downcase
-    State.where(name: state_name).first
-  end
+  class EDDLoader
+    attr_reader :hsh
+    def initialize(hsh)
+      @hsh = hsh
+    end
 
-  def election
-    @election ||= Election.first_or_create(
-      jurisdiction_id: state.id,
-      jurisdiction_type: "state",
-      election_type: transformed_data["election_type"],
-      election_date: transformed_data["election_date"]
-    )
-  end
+    def save
+      election
+      hsh["attributes"].map do |voting_option|
+        create_voting_option(voting_option)
+      end
+    end
 
-  def create_voting_option(hsh)
-    VotingOption.first_or_create(
-      election_id: election.id,
-      voting_type: hsh["type"],
-      dates_and_deadlines: hsh["dates_and_deadlines"]
-    )
+    def state
+      state_name = hsh["state"].downcase
+      State.where(name: state_name).first
+    end
+
+    def election
+      Election.find_or_create_by(
+        jurisdiction_id: state.id,
+        jurisdiction_type: "state",
+        election_type: hsh["election_type"],
+        election_date: hsh["election_date"]
+      )
+    end
+
+    def create_voting_option(attributes)
+      # VotingOption.find_or_create_by(
+      #   election_id: election.id,
+      #   voting_type: attributes["type"],
+      # )
+    end
   end
 end
