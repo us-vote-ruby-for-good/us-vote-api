@@ -13,7 +13,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'twitter-bootstrap-rails'
 gem 'wombat'
-gem 'webmock'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'chronic'
 
@@ -30,6 +29,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rspec-rails'
+  gem 'webmock'
   gem 'factory_girl'
   gem 'database_cleaner'
   gem 'capybara'
