@@ -10,6 +10,18 @@ RSpec.describe Api::ElectionsController, type: :controller do
         election_date: Date.tomorrow
       )
     end
+    let!(:voting_option) do
+      FactoryGirl.create(:voting_option,
+        election_id:         election.id,
+        voting_type:         "absentee",
+        dates_and_deadlines: {
+          registration: {
+            "date_type" => "postmark",
+            "date"      => Date.yesterday
+          }
+        }
+      )
+    end
 
     before do
       get :index, state_id: 'MD', format: :json
@@ -25,8 +37,19 @@ RSpec.describe Api::ElectionsController, type: :controller do
             "id"         => election.id.to_s,
             "type"       => "elections",
             "attributes" => {
-              "election_date" => Date.tomorrow.to_s(:db),
-              "election_type" => "primary"
+              "election_type"  => "primary",
+              "election_date"  => Date.tomorrow.to_s(:db),
+              "voting_options" => [
+                {
+                  "voting_type"         => "absentee",
+                  "dates_and_deadlines" => {
+                    "registration" => {
+                      "date_type" => "postmark",
+                      "date"      => Date.yesterday.to_s(:db)
+                    }
+                  }
+                }
+              ]
             }
           }
         ]
