@@ -20,7 +20,8 @@ class ElectionDateAndDeadlineTransformer
   end
 
   def states_names
-    @states_names = ["Alabama", "Alaska", "West Virginia","Virginia", "Virgin Islands"] # State.all.pluck(:name)
+    StateBuilder.new.build if State.all.empty?
+    @states_names = State.all.pluck(:name).map(&:titleize)
   end
 
   def election_type
@@ -42,12 +43,18 @@ class ElectionDateAndDeadlineTransformer
 
   def election_date
     Chronic.parse(date_and_deadline["election_date"]).to_date
+
   end
 
   def parse_attributes(date_and_deadline)
     attributes = []
-    early_in_person_voting_hash = { "type" => "early in person voting" }
-    early_in_person_voting_hash["start_date"] = Chronic.parse(date_and_deadline["early_in_person_voting"]).to_date
-    [ early_in_person_voting_hash ]
+    unless date_and_deadline["early_in_person_voting"].empty?
+      early_in_person_voting_hash = { "type" => "early in person voting" }
+      if chronic = Chronic.parse(date_and_deadline["early_in_person_voting"])
+        early_in_person_voting_hash["dates_and_deadlines"] = chronic.to_date
+      end
+      attributes << early_in_person_voting_hash
+    end
+    attributes
   end
 end
